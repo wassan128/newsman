@@ -1,29 +1,29 @@
 package main
 
 import (
-	"fmt"
-	"net/http"
-	"io/ioutil"
 	"encoding/json"
+	"fmt"
+	"io/ioutil"
+	"net/http"
 )
 
 const EndPoint = "http://localhost:8000/top-headlines.json"
 
 type News struct {
-	Status string `json:"status"`
-	TotalResults int `json:"totalResults"`
-	Articles []struct {
+	Status       string `json:"status"`
+	TotalResults int    `json:"totalResults"`
+	Articles     []struct {
 		Source struct {
-			Id string `json:"id"`
+			Id   string `json:"id"`
 			Name string `json:"name"`
 		}
-		Author string `json:"author"`
-		Title string `json:"title"`
+		Author      string `json:"author"`
+		Title       string `json:"title"`
 		Description string `json:"description"`
-		Url string `json:"url"`
-		UrlToImage string `json:"urlToImage"`
+		Url         string `json:"url"`
+		UrlToImage  string `json:"urlToImage"`
 		PublishedAt string `json:"publishedAt"`
-		Content string `json:"content"`
+		Content     string `json:"content"`
 	} `json:"articles"`
 }
 
