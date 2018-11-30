@@ -4,6 +4,19 @@
 	margin: 0;
 	padding: 0;
 }
+*::-webkit-scrollbar {
+	width: 5px;
+	height: 10px;
+}
+*::-webkit-scrollbar-track {
+	background: #446;
+	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+	border-radius: 10px;
+}
+*::-webkit-scrollbar-thumb {
+	background: #113;
+	border-radius: 10px;
+}
 body * {
 	font-weight: normal;
 	font-size: 10pt;
