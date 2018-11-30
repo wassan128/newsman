@@ -12,9 +12,8 @@ import (
 	"github.com/zserge/lorca"
 )
 
-const EndPoint = "http://localhost:8000/top-headlines.json"
+var EndPoint string = "https://newsapi.org/v2/top-headlines?country=jp&apiKey=" + os.Getenv("NEWSAPI_KEY")
 const repo_path = "src/github.com/wassan128/newsman"
-
 type Source struct {
 	Id   string `json:"id"`
 	Name string `json:"name"`
@@ -50,9 +49,7 @@ func getNews() News {
 	return news
 }
 
-func server() {
-	news := getNews()
-
+func server(news News) {
 	router := gin.Default()
 	router.Static("/static", filepath.Join(os.Getenv("GOPATH"), repo_path, "static"))
 	router.LoadHTMLGlob(filepath.Join(os.Getenv("GOPATH"), repo_path, "templates/*"))
@@ -61,11 +58,12 @@ func server() {
 			"articles": news.Articles,
 		})
 	})
-	router.Run()
+	go router.Run()
 }
 
 func main() {
-	go server()
+	news := getNews()
+	server(news)
 
 	var ui lorca.UI
 	ui, _ = lorca.New("", "", 320, 480)
