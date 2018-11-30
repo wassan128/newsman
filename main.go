@@ -27,8 +27,8 @@ type Article struct {
 	Content     string `json:"content"`
 }
 type News struct {
-	Status       string  `json:"status"`
-	TotalResults int     `json:"totalResults"`
+	Status       string    `json:"status"`
+	TotalResults int       `json:"totalResults"`
 	Articles     []Article `json:"articles"`
 }
 
@@ -71,4 +71,3 @@ func main() {
 	ui.Load("http://localhost:8080")
 	<-ui.Done()
 }
-
