@@ -48,9 +48,9 @@ func getNews() News {
 
 func main() {
 	news := getNews()
-	fmt.Println(news.Articles)
 
 	router := gin.Default()
+	router.Static("/static", "static")
 	router.LoadHTMLGlob("templates/*")
 	router.GET("/", func(c *gin.Context) {
 		c.HTML(http.StatusOK, "index.tmpl", gin.H{

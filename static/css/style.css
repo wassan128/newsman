@@ -1,0 +1,69 @@
+@charset "utf-8";
+
+* {
+	margin: 0;
+	padding: 0;
+}
+body * {
+	font-weight: normal;
+	font-size: 10pt;
+}
+header {
+	position: sticky;
+	top: 0;
+	background: #001;
+	color: #fff;
+	padding: 1em;
+	box-shadow: 0 0 5px 1px rgba(255, 255, 255, 0.5);
+}
+	header h1 {
+		font-size: 12pt;
+	}
+	header h1::before {
+		content: "";
+		display: inline-block;
+		background-image: url("/static/images/logo.png");
+		background-size: cover;
+		width: 25px;
+		height: 25px;
+		vertical-align: middle;
+		margin-right: 0.5em;
+	}
+main {
+}
+	main ul {
+		list-style-type: none;
+	}
+		main ul li {
+			padding: 1em;
+			background: #002;
+			border-bottom: 1px solid #223;
+			color: #eee;
+			text-shadow: 0 0 3px rgba(255, 255, 255, 0.5);
+			transition: 0.3s;
+			cursor: pointer;
+		}
+		main ul li:hover {
+			background: #224;
+		}
+			main ul li a {
+				text-decoration: none;
+				color: #ccd;
+				font-size: 8pt;
+				margin-left: 1em;
+			}
+			main ul li a:hover {
+				text-decoration: underline;
+			}
+footer {
+	position: sticky;
+	bottom: 0;
+	background: #001;
+	padding: 0.8em;
+	box-shadow: 0 0 5px 1px rgba(255, 255, 255, 0.5);
+}
+	footer * {
+		text-align: center;
+		font-size: 8pt;
+		color: #ccc;
+	}

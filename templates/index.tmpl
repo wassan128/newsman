@@ -3,11 +3,25 @@
 <head>
 	<meta charset="utf-8"/>
 	<title>newsman</title>
+	<link rel="stylesheet" href="/static/css/style.css"/>
 </head>
 <body>
-	{{range .articles}}
-	<p>{{.Title}}</p>
-	{{end}}
+	<header>
+		<h1>newsman</h1>
+	</header>
+	<main>
+		<ul>
+			{{range .articles}}
+			<li>
+				{{.Title}}
+				<a href="{{.Url}}">(続きを読む)</a>
+			</li>
+			{{end}}
+		</ul>
+	</main>
+	<footer>
+		<p>2018 &copy; wassan128(news powered by <a href="https://newsapi.org/">newsapi.org</a>)</p>
+	</footer>
 </body>
 </html>
 
