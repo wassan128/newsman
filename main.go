@@ -7,6 +7,7 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
+	"github.com/zserge/lorca"
 )
 
 const EndPoint = "http://localhost:8000/top-headlines.json"
@@ -46,7 +47,7 @@ func getNews() News {
 	return news
 }
 
-func main() {
+func server() {
 	news := getNews()
 
 	router := gin.Default()
@@ -58,5 +59,16 @@ func main() {
 		})
 	})
 	router.Run()
+}
+
+func main() {
+	go server()
+
+	var ui lorca.UI
+	ui, _ = lorca.New("", "", 320, 480)
+	defer ui.Close()
+
+	ui.Load("http://localhost:8080")
+	<-ui.Done()
 }
 
