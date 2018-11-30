@@ -5,12 +5,15 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
+	"os"
+	"path/filepath"
 
 	"github.com/gin-gonic/gin"
 	"github.com/zserge/lorca"
 )
 
 const EndPoint = "http://localhost:8000/top-headlines.json"
+const repo_path = "src/github.com/wassan128/newsman"
 
 type Source struct {
 	Id   string `json:"id"`
@@ -51,8 +54,8 @@ func server() {
 	news := getNews()
 
 	router := gin.Default()
-	router.Static("/static", "static")
-	router.LoadHTMLGlob("templates/*")
+	router.Static("/static", filepath.Join(os.Getenv("GOPATH"), repo_path, "static"))
+	router.LoadHTMLGlob(filepath.Join(os.Getenv("GOPATH"), repo_path, "templates/*"))
 	router.GET("/", func(c *gin.Context) {
 		c.HTML(http.StatusOK, "index.tmpl", gin.H{
 			"articles": news.Articles,
